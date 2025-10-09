@@ -4,29 +4,52 @@
       <v-card-title>Usuários cadastrados</v-card-title>
 
       <v-card-title>
-          <v-btn @click="isDialogOpen = true" variant="tonal" size="small">Adicionar usuário
-          </v-btn>
+        <v-btn @click="isDialogOpen = true" variant="tonal" size="small">
+          Adicionar usuário
+        </v-btn>
 
+     
         <v-dialog v-model="isDialogOpen" width="800px">
-            <v-card>
-               <v-card-text>
-                Modal teste
-               </v-card-text>
-            </v-card>
+          <v-card>
+            <v-card-title>Adicionar usuário</v-card-title>
+            <v-card-text>
+              <v-row>
+
+                <v-col>
+                  <v-text-field 
+                  label="Nome"
+                  type="text"
+                  variant="outlined">
+                </v-text-field>
+                </v-col>
+
+                <v-col>
+                  <v-text-field
+                  label="Email"
+                  type="email"
+                  v-bind:rules="emailRules"
+                  required
+                  variant="outlined">
+                </v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-select
+              label="Cargo"
+              variante="outline"
+              :items="['Programador',
+              'Advogado','Policial',
+              'Gerente']">
+              </v-select>
+            </v-card-text>
+
+      
+            <v-card-actions>
+              <v-btn variant="text" @click="isDialogOpen = false">Cancelar</v-btn>
+              <v-btn variant="tonal" color="success">Salvar</v-btn>
+            </v-card-actions>
+          </v-card>
         </v-dialog>
-
-        <!-- <v-dialog width="800px">
-            <template #activator="{ props }">
-                <v-btn v-bind:="props" variant="tonal" size="small">Adicionar usuário</v-btn>
-            </template>
-            
-            <v-card>
-               <v-card-text>
-                Modal teste
-               </v-card-text>
-            </v-card>
-
-        </v-dialog> -->
       </v-card-title>
     </div>
 
@@ -43,25 +66,58 @@
         <tr>
           <td>Tiago Soares</td>
           <td>tiago.soares@norven.com.br</td>
-          <td>Desenvolverdor Software</td>
           <td>
-            <v-btn variant="tonal" color="primary">Editar</v-btn>
+            <v-chip color="text" variant="outlined" size="small">Desenvolvedor Software</v-chip>
+          </td>
+          <td>
+            <v-dialog width="800px">
+              <template #activator="{ props }">
+                <v-btn v-bind:="props" variant="tonal" color="primary">
+                Editar
+                </v-btn
+                >
+              </template>
+              <v-card>
+                <v-card-text>Modal Editar</v-card-text>
+              </v-card>
+            </v-dialog>
           </td>
         </tr>
         <tr>
           <td>Daniel Soares</td>
           <td>daniel.soares@transzilli.com.br</td>
-          <td>Motorista</td>
           <td>
-            <v-btn variant="tonal" color="primary">Editar</v-btn>
+            <v-chip color="success" variant="outlined" size="small">Motorista</v-chip></td>
+          <td>
+           <v-dialog width="800px">
+              <template #activator="{ props }">
+                <v-btn v-bind:="props" variant="tonal" color="primary"
+                  >Editar</v-btn
+                >
+              </template>
+              <v-card>
+                <v-card-text>Modal Editar</v-card-text>
+              </v-card>
+            </v-dialog>
           </td>
         </tr>
         <tr>
           <td>Andre Soares</td>
           <td>andre.soares@plcgoias.com.br</td>
-          <td>Primero Soldado</td>
           <td>
-            <v-btn variant="tonal" color="primary">Editar</v-btn>
+            <v-chip color="primary" variant="outlined" size="small">Primeiro Soldado</v-chip>
+          </td>
+          <td>
+           <v-dialog width="800px">
+              <template #activator="{ props }">
+                <v-btn v-bind:="props" variant="tonal" color="primary"
+                  >Editar</v-btn
+                >
+              </template>
+              <v-card>
+                <v-card-text>Modal Editar</v-card-text>
+              </v-card>
+            </v-dialog>
           </td>
         </tr>
       </tbody>
@@ -69,13 +125,25 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  nome: "Table",
-};
+const isDialogOpen = ref(false);
 
-const isDialogOpen = ref(false)
+const emailRules = [
+  value => {
+    if(value) {
+      return true
+    }
+    return 'E-mail é obrigatório.'
+  },
+  value => {
+    if(value.includes('@')){
+      return true
+    }else{
+      return 'E-mail inválido!!'
+    }
+  }
+];
 
 </script>
