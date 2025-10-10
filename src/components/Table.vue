@@ -1,51 +1,45 @@
 <template>
   <v-card flat class="border mb-4">
     <div class="d-flex justify-space-between">
-      <v-card-title>Usuários cadastrados</v-card-title>
-
       <v-card-title>
-        <v-btn @click="isDialogOpen = true" variant="tonal" size="small">
+        <v-btn @click="isDialogOpenAdd = true" variant="tonal" size="small">
           Adicionar usuário
         </v-btn>
 
-     
-        <v-dialog v-model="isDialogOpen" width="800px">
+        <v-dialog v-model="isDialogOpenAdd" width="800px">
           <v-card>
             <v-card-title>Adicionar usuário</v-card-title>
             <v-card-text>
               <v-row>
-
                 <v-col>
-                  <v-text-field 
-                  label="Nome"
-                  type="text"
-                  variant="outlined">
-                </v-text-field>
+                  <v-text-field label="Nome" type="text" variant="outlined">
+                  </v-text-field>
                 </v-col>
 
                 <v-col>
                   <v-text-field
-                  label="Email"
-                  type="email"
-                  v-bind:rules="emailRules"
-                  required
-                  variant="outlined">
-                </v-text-field>
+                    label="Email"
+                    type="email"
+                    v-bind:rules="emailRules"
+                    required
+                    variant="outlined"
+                  >
+                  </v-text-field>
                 </v-col>
               </v-row>
 
               <v-select
-              label="Cargo"
-              variante="outline"
-              :items="['Programador',
-              'Advogado','Policial',
-              'Gerente']">
+                label="Cargo"
+                variant="outlined"
+                :items="['Programador', 'Advogado', 'Policial', 'Gerente']"
+              >
               </v-select>
             </v-card-text>
 
-      
             <v-card-actions>
-              <v-btn variant="text" @click="isDialogOpen = false">Cancelar</v-btn>
+              <v-btn variant="text" @click="isDialogOpenAdd = false"
+                >Cancelar</v-btn
+              >
               <v-btn variant="tonal" color="success">Salvar</v-btn>
             </v-card-actions>
           </v-card>
@@ -67,18 +61,55 @@
           <td>Tiago Soares</td>
           <td>tiago.soares@norven.com.br</td>
           <td>
-            <v-chip color="text" variant="outlined" size="small">Desenvolvedor Software</v-chip>
+            <v-chip color="text" variant="outlined" size="small"
+              >Desenvolvedor Software</v-chip
+            >
           </td>
           <td>
-            <v-dialog width="800px">
-              <template #activator="{ props }">
-                <v-btn v-bind:="props" variant="tonal" color="primary">
-                Editar
-                </v-btn
-                >
-              </template>
+            <v-btn
+              @click="isDialogOpenEdit = true"
+              variant="tonal"
+              color="primary"
+            >
+              Editar
+            </v-btn>
+
+            <v-dialog v-model="isDialogOpenEdit" width="800px">
               <v-card>
-                <v-card-text>Modal Editar</v-card-text>
+                <v-card-title>Editar usuário</v-card-title>
+                <v-card-text>
+                  <v-row>
+                    <v-col>
+                      <v-text-field label="Nome" type="text" variant="outlined">
+                      </v-text-field>
+                    </v-col>
+
+                    <v-col>
+                      <v-text-field
+                        label="Email"
+                        type="email"
+                        v-bind:rules="emailRules"
+                        required
+                        variant="outlined"
+                      >
+                      </v-text-field>
+                    </v-col>
+                  </v-row>
+
+                  <v-select
+                    label="Cargo"
+                    variant="outlined"
+                    :items="['Programador', 'Advogado', 'Policial', 'Gerente']"
+                  >
+                  </v-select>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn variant="text" @click="isDialogOpenEdit = false"
+                    >Cancelar</v-btn
+                  >
+                  <v-btn variant="tonal" color="success">Salvar</v-btn>
+                </v-card-actions>
               </v-card>
             </v-dialog>
           </td>
@@ -87,16 +118,55 @@
           <td>Daniel Soares</td>
           <td>daniel.soares@transzilli.com.br</td>
           <td>
-            <v-chip color="success" variant="outlined" size="small">Motorista</v-chip></td>
+            <v-chip color="success" variant="outlined" size="small"
+              >Motorista</v-chip
+            >
+          </td>
           <td>
-           <v-dialog width="800px">
-              <template #activator="{ props }">
-                <v-btn v-bind:="props" variant="tonal" color="primary"
-                  >Editar</v-btn
-                >
-              </template>
+            <v-btn
+              @click="isDialogOpenEdit = true"
+              variant="tonal"
+              color="primary"
+            >
+              Editar
+            </v-btn>
+
+            <v-dialog v-model="isDialogOpenEdit" width="800px">
               <v-card>
-                <v-card-text>Modal Editar</v-card-text>
+                <v-card-title>Editar usuário</v-card-title>
+                <v-card-text>
+                  <v-row>
+                    <v-col>
+                      <v-text-field label="Nome" type="text" variant="outlined">
+                      </v-text-field>
+                    </v-col>
+
+                    <v-col>
+                      <v-text-field
+                        label="Email"
+                        type="email"
+                        v-bind:rules="emailRules"
+                        required
+                        variant="outlined"
+                      >
+                      </v-text-field>
+                    </v-col>
+                  </v-row>
+
+                  <v-select
+                    label="Cargo"
+                    variant="outlined"
+                    :items="['Programador', 'Advogado', 'Policial', 'Gerente']"
+                  >
+                  </v-select>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn variant="text" @click="isDialogOpenEdit = false"
+                    >Cancelar</v-btn
+                  >
+                  <v-btn variant="tonal" color="success">Salvar</v-btn>
+                </v-card-actions>
               </v-card>
             </v-dialog>
           </td>
@@ -105,17 +175,55 @@
           <td>Andre Soares</td>
           <td>andre.soares@plcgoias.com.br</td>
           <td>
-            <v-chip color="primary" variant="outlined" size="small">Primeiro Soldado</v-chip>
+            <v-chip color="primary" variant="outlined" size="small"
+              >Primeiro Soldado</v-chip
+            >
           </td>
           <td>
-           <v-dialog width="800px">
-              <template #activator="{ props }">
-                <v-btn v-bind:="props" variant="tonal" color="primary"
-                  >Editar</v-btn
-                >
-              </template>
+            <v-btn
+              @click="isDialogOpenEdit = true"
+              variant="tonal"
+              color="primary"
+            >
+              Editar
+            </v-btn>
+
+            <v-dialog v-model="isDialogOpenEdit" width="800px">
               <v-card>
-                <v-card-text>Modal Editar</v-card-text>
+                <v-card-title>Editar usuário</v-card-title>
+                <v-card-text>
+                  <v-row>
+                    <v-col>
+                      <v-text-field label="Nome" type="text" variant="outlined">
+                      </v-text-field>
+                    </v-col>
+
+                    <v-col>
+                      <v-text-field
+                        label="Email"
+                        type="email"
+                        v-bind:rules="emailRules"
+                        required
+                        variant="outlined"
+                      >
+                      </v-text-field>
+                    </v-col>
+                  </v-row>
+
+                  <v-select
+                    label="Cargo"
+                    variant="outlined"
+                    :items="['Programador', 'Advogado', 'Policial', 'Gerente']"
+                  >
+                  </v-select>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn variant="text" @click="isDialogOpenEdit = false"
+                    >Cancelar</v-btn
+                  >
+                  <v-btn variant="tonal" color="success">Salvar</v-btn>
+                </v-card-actions>
               </v-card>
             </v-dialog>
           </td>
@@ -128,22 +236,22 @@
 <script setup>
 import { ref } from "vue";
 
-const isDialogOpen = ref(false);
+const isDialogOpenAdd = ref(false);
+const isDialogOpenEdit = ref(false);
 
 const emailRules = [
-  value => {
-    if(value) {
-      return true
+  (value) => {
+    if (value) {
+      return true;
     }
-    return 'E-mail é obrigatório.'
+    return "E-mail é obrigatório.";
   },
-  value => {
-    if(value.includes('@')){
-      return true
-    }else{
-      return 'E-mail inválido!!'
+  (value) => {
+    if (value.includes("@")) {
+      return true;
+    } else {
+      return "E-mail inválido!!";
     }
-  }
+  },
 ];
-
 </script>

@@ -1,35 +1,12 @@
 <template>
-  <!-- Sidebar -->
-  <v-navigation-drawer v-model="isDraweOpen">
-    <v-list>
-      <v-list-subheader>Navigate</v-list-subheader>
-      <v-list-item prepend-icon="mdi-home">Home</v-list-item>
-      <v-list-item prepend-icon="mdi-account">Usuários</v-list-item>
-
-      <v-list-group value="clientes">
-        <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-account-circle"
-            title="Clientes"
-          ></v-list-item>
-        </template>
-        <v-list-item prepend-icon="mdi-currency-usd">Vendas</v-list-item>
-        <v-list-item prepend-icon="mdi-chart-line">Relatório</v-list-item>
-      </v-list-group>
-    </v-list>
-  </v-navigation-drawer>
-
-  <!-- Navbar -->
-  <v-app-bar flat class="border-b">
-    <v-app-bar-nav-icon
-      @click="isDraweOpen = !isDraweOpen"
-    ></v-app-bar-nav-icon>
-    <v-app-bar-title>Meu app</v-app-bar-title>
+  <!-- App Bar -->
+  <v-app-bar>
+    <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar-title>Vuetify</v-app-bar-title>
 
     <template #append>
-      <v-btn icon class="mr-2">
-        <!-- Icon sino -->
+      <!-- Icon notificação -->
+      <v-btn icon class="mr-4">
         <v-badge color="primary" content="2">
           <v-icon>mdi-bell-outline</v-icon>
         </v-badge>
@@ -38,19 +15,24 @@
       <!-- Avatar -->
       <v-menu>
         <template #activator="{ props }">
-          <v-avatar v-bind:="props">
+          <v-avatar v-bind:="props" class="mr-8">
             <v-img
               src="https://i.pinimg.com/736x/c1/11/99/c111997e7e2a677897e3073e787efb3d.jpg"
             ></v-img>
           </v-avatar>
         </template>
 
+        <!-- Menu Perfil -->
         <v-card min-height="130px">
-          <v-list :lines="false" density="compact" nav>
-            <v-list-item prepend-icon="mdi-account-outline">
+          <v-list :lines="false" density="comfortable" nav class="pa-2">
+            <v-list-item
+              prepend-icon="mdi-account-outline"
+              class="mb-2 compact-item">
               <v-list-item-title>Meu Perfil</v-list-item-title>
             </v-list-item>
-            <v-list-item prepend-icon="mdi-heart-outline">
+            <v-list-item
+              prepend-icon="mdi-heart-outline"
+              class="mb-2 compact-item">
               <v-list-item-title>Favoritos</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -58,9 +40,20 @@
       </v-menu>
     </template>
   </v-app-bar>
+
+  <!-- Navigation Drawer temporário -->
+  <v-navigation-drawer v-model="drawer" temporary width="240">
+    <v-list>
+      <v-list-subheader>Menu</v-list-subheader>
+      <v-list-item prepend-icon="mdi-home" to="/">Home</v-list-item>
+      <v-list-item prepend-icon="mdi-account" to="/usuarios">Usuários</v-list-item>
+      <v-list-item prepend-icon="mdi-cards" to="/cards">Cards</v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
 import { ref } from "vue";
-const isDraweOpen = ref(false);
+
+const drawer = ref(null);
 </script>
