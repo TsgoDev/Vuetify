@@ -14,6 +14,7 @@ export default createVuetify({
           success: '#4CAF50',
           warning: '#FB8C00',
           info: '#2196F3',
+          colorDark: '#121212',
         },
       },
     },
