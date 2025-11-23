@@ -46,9 +46,8 @@
     <v-list>
       <v-list-subheader>Menu</v-list-subheader>
       <v-list-item prepend-icon="mdi-home" to="/">Home</v-list-item>
-      <v-list-item prepend-icon="mdi-account" to="/usuarios">Usuários</v-list-item>
-      <v-list-item prepend-icon="mdi-cards" to="/cards">Cards</v-list-item>
-    </v-list>
+      <v-list-item prepend-icon="mdi-account" to="/index">Usuários</v-list-item>
+     </v-list>
   </v-navigation-drawer>
 </template>
 

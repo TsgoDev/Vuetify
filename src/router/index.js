@@ -1,23 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Index from "../pages/index.vue";
-import Cards from "../pages/Cards.vue";
-import Usuarios from "../pages/Usuarios.vue";
+import Index from "../pages/Home.vue";
+import Usuarios from "../pages/Index.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Index",
+    name: "Home",
     component: Index,
   },
   {
-    path: "/usuarios",
-    name: "Usuarios",
+    path: "/index",
+    name: "Index",
     component: Usuarios,
-  },
-  {
-    path: "/cards",
-    name: "Cards",
-    component: Cards,
   },
 ];
 
